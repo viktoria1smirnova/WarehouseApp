@@ -1,0 +1,44 @@
+﻿<Window x:Class="WarehouseApp.Views.OrgsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Организация" Height="450" Width="600" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Margin="4">
+                <TextBlock FontFamily="Verdana" FontSize="14" Text="{Binding OrgName}" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="1">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button Content="OK" Command="{Binding OkCommand}"/>
+                <Button Content="Закрыть" Command="{Binding ExitCommand}"/>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel Grid.Column="0">
+            <StatusBar DockPanel.Dock="Bottom" Background="Silver">
+                <TextBlock FontFamily="Verdana" FontSize="14" Text="{Binding StatusText}"/>
+            </StatusBar>
+
+            <ListBox ItemsSource="{Binding Organizations}" SelectedItem="{Binding SelectedOrg}" 
+                     ItemTemplate="{StaticResource listTemplate}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить организацию" Command="{Binding PlacementTarget.DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+                        <MenuItem Header="Изменить организацию" Command="{Binding PlacementTarget.DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+                        <MenuItem Header="Удалить организацию" Command="{Binding PlacementTarget.DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</Window>

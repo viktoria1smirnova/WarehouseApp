@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="WarehouseApp.Data/WarehouseApp.Data.csproj" Id="ebd17027-f58b-4be2-8af7-26116a211b89" />
+  <Project Path="WarehouseApp.Tests/WarehouseApp.Tests.csproj" Id="6f71a841-207a-4e0c-8421-09ecdf8003b0" />
+  <Project Path="WarehouseApp/WarehouseApp.csproj" />
+</Solution>
